@@ -25,6 +25,9 @@ public class Dog {
     @Column
     private String description;
 
+    @Column
+    private String favTreat;
+
     public Dog(){}
 
     public Long getId(){
@@ -62,6 +65,13 @@ public class Dog {
 
     public void setDescription(String description){
         this.description = description;
+    }
+
+    public String getFavTreat(){
+        return favTreat;
+    }
+    public void setFavTreat(String favTreat){
+        this.favTreat = favTreat;
     }
 
     @JsonIgnore
