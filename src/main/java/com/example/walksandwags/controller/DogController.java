@@ -31,4 +31,8 @@ public class DogController {
 //        return HttpStatus.OK;
 //
 //    }
+    @DeleteMapping("/delete/{dogId}")
+    public ResponseEntity deleteDog(@PathVariable Long dogId) {
+        return dogService.deleteDogById(dogId);
+    }
 }

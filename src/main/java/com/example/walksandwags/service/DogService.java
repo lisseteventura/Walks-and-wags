@@ -9,7 +9,6 @@ public interface DogService {
 
     public Iterable<Dog> listAllDogs();
 
-
 //    public void deleteDog(Long dogId);
-
+    public ResponseEntity deleteDogById(Long dogId);
 }

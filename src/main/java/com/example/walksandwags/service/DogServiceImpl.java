@@ -5,6 +5,7 @@ import com.example.walksandwags.model.User;
 import com.example.walksandwags.repository.DogRepository;
 import com.example.walksandwags.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +39,11 @@ public class DogServiceImpl implements DogService {
     }
 
 
-//    @Override
-//    @Transactional
-//    public ResponseEntity deleteDog(Long dogId) {
-//        dogRepository.deleteById(dogId);
-//
-//    }
+    @Override
+    @Transactional
+    public ResponseEntity deleteDogById(Long dogId) {
+        dogRepository.deleteById(dogId);
+        return new ResponseEntity(HttpStatus.OK);
+
+    }
 }
