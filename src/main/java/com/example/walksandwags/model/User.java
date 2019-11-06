@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.List;
 
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -59,17 +60,35 @@ public class User {
         this.userProfile = userProfile;
     }
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="dog_id")
-    private Dog dog;
-
-    public Dog getDog(){
-        return dog;
+//    @OneToOne(cascade = CascadeType.ALL)
+////    @JoinColumn(name="dog_id")
+    @OneToMany(
+        mappedBy = "user",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Dog> dogs;
+    public List<Dog> getDog() {
+        return dogs;
     }
 
-    public void setDog(Dog dog){
-        this.dog = dog;
+    public void setDog(List<Dog> dogs) {
+        this.dogs= dogs;
     }
+
+    public void addDog(Dog dog){
+        dogs.add(dog);
+    }
+
+//    private Dog dog;
+//
+//    public Dog getDog(){
+//        return dog;
+//    }
+//
+//    public void setDog(Dog dog){
+//        this.dog = dog;
+//    }
 
 
 }

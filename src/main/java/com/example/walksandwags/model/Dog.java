@@ -1,6 +1,7 @@
 package com.example.walksandwags.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -64,8 +65,11 @@ public class Dog {
     }
 
     @JsonIgnore
-    @OneToOne(mappedBy = "dog", cascade={CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @OneToOne(mappedBy = "dog", cascade={CascadeType.DETACH,
+//            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "user_id", nullable = false)
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private User user;
 
     public User getUser() {

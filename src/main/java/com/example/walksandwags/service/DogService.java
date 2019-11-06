@@ -1,6 +1,7 @@
 package com.example.walksandwags.service;
 
 import com.example.walksandwags.model.Dog;
+import org.springframework.http.ResponseEntity;
 
 public interface DogService {
 
@@ -9,6 +10,6 @@ public interface DogService {
     public Iterable<Dog> listAllDogs();
 
 
-    public void deleteDog(Long dogId);
+//    public void deleteDog(Long dogId);
 
 }

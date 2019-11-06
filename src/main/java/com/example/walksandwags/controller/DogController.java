@@ -4,6 +4,7 @@ import com.example.walksandwags.model.Dog;
 import com.example.walksandwags.service.DogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -24,9 +25,10 @@ public class DogController {
     public Iterable<Dog> listAllDogs() { return dogService.listAllDogs(); }
 
     //delete dog profile
-    @DeleteMapping("/delete/{dogId}")
-    public HttpStatus deleteDogProfile(@PathVariable Long dogId) {
-        dogService.deleteDog(dogId);
-        return HttpStatus.OK;
-    }
+//    @DeleteMapping("/delete/{dogId}")
+//    public HttpStatus deleteDogById(@PathVariable Long dogId) {
+//        dogService.deleteDog(dogId);
+//        return HttpStatus.OK;
+//
+//    }
 }
