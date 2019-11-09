@@ -6,12 +6,11 @@ import Profile from "./Profile.js";
 import Settings from "./Settings.js";
 import { Layout } from "./components/Layout.js";
 import { NavigationBar } from "./components/NavigationBar.js";
-import { Jumbotron } from "./components/Jumbotron.js";
 function App() {
   return (
     <React.Fragment>
       <NavigationBar />
-      <Jumbotron />
+
       <Layout>
         <Router>
           <Switch>

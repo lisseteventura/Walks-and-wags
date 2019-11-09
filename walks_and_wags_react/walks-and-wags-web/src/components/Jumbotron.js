@@ -29,7 +29,7 @@ export const Jumbotron = () => (
     <Jumbo fluid className="jumbo">
       <div className="overlay"></div>
       <Container>
-        <h1>Find some four-legged friends!</h1>
+        <h1>Looking for a companion for your four-legged friend?</h1>
       </Container>
     </Jumbo>
   </Styles>
