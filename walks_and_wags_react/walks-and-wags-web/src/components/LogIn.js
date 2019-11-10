@@ -11,7 +11,8 @@ class LogIn extends Component {
     this.state = {
       username: "",
       password: "",
-      loggedIn: false
+      loggedIn: false,
+      signedUp: false
     };
   }
 
@@ -49,9 +50,25 @@ class LogIn extends Component {
       });
   };
 
+  submitSignUp = e => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8080/signup", this.state)
+      .then(response => {
+        console.log(response);
+        this.setState({ signedUp: true });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   render() {
     if (this.state.loggedIn) {
       return <Redirect to="/profile" />;
+    }
+    if (this.state.signedUp) {
+      return <Redirect to="/settings" />;
     }
     return (
       <div>
@@ -81,10 +98,20 @@ class LogIn extends Component {
               onChange={this.handlePasswordChange}
             />
           </FormGroup>
-          <Button className="btn btn-primary btn-block">Login</Button>
-          <Button className="btn btn-primary btn-block">Signup</Button>
+          <Button
+            className="btn btn-primary btn-block"
+            onClick={this.submitLogIn}
+          >
+            Log in
+          </Button>
+          <SignUp
+            username={this.state.username}
+            password={this.state.password}
+            submitSignUp={e => this.submitSignUp(e)}
+            handleUsernameChange={this.handleUsernameChange}
+            handlePasswordChange={this.handlePasswordChange}
+          />
         </Form>
-        <SignUp />
       </div>
     );
   }

@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 
 const SignUp = props => {
-  const { buttonLabel, className } = props;
+  const { className } = props;
 
   const [modal, setModal] = useState(false);
 
@@ -18,22 +18,37 @@ const SignUp = props => {
 
   return (
     <div>
-      <Button color="warning" onClick={toggle}>
-        {buttonLabel}
+      <Button
+        color="warning"
+        style={{ width: "555px", height: "38px", color: "white" }}
+        onClick={toggle}
+      >
+        Sign up
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>New User</ModalHeader>
         <ModalBody>
-          <form>
+          <form onSubmit={e => props.submitSignUp(e)}>
             <FormGroup>
-              <Input type="text" placeholder="username" />
+              <p>Please enter required fields.</p>
+              <Input
+                type="username"
+                placeholder="username"
+                value={props.username}
+                onChange={props.handleUsernameChange}
+              />
               <br />
-              <Input type="text" placeholder="password" />
+              <Input
+                type="password"
+                placeholder="password"
+                value={props.password}
+                onChange={props.handlePasswordChange}
+              />
             </FormGroup>
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="warning" onClick={toggle}>
+          <Button color="warning" onClick={e => props.submitSignUp(e)}>
             Sign Up!
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
