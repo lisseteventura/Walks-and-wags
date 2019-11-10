@@ -1,6 +1,6 @@
 import React from "react";
 // import "./App.css";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home.js";
 import Profile from "./Profile.js";
 import Settings from "./Settings.js";

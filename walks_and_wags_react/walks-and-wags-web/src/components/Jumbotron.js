@@ -8,7 +8,7 @@ const Styles = styled.div`
     background: url(${dogImage}) no-repeat fixed bottom;
     background-size: cover;
     color: #ccc;
-    height: 400px;
+    height: 600px;
     position: relative;
     z-index: -2;
   }
