@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import SignUp from "./SignUp.js";
 
 class LogIn extends Component {
   constructor(props) {
@@ -83,6 +84,7 @@ class LogIn extends Component {
           <Button className="btn btn-primary btn-block">Login</Button>
           <Button className="btn btn-primary btn-block">Signup</Button>
         </Form>
+        <SignUp />
       </div>
     );
   }
