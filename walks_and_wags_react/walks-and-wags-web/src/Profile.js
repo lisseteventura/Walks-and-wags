@@ -7,31 +7,12 @@ class Profile extends Component {
 
     this.state = {
       dogPicURL: "",
-      dogPicLoaded: false,
-      dogPics: [],
-      dogPicError: false
+      dogPicLoaded: false
     };
   }
 
-  componentDidMount() {
-    fetch("https://dog.ceo/api/breeds/list/random/3")
-      .then(response => {
-        return response.json();
-      })
-      .then(response => {
-        this.setState({
-          dogPics: response.message
-        });
-      })
-      .catch(error => {
-        this.setState({
-          dogPicError: true
-        });
-      });
-  }
-
-  retrieveDogPic = dog => {
-    fetch(`https://dog.ceo/api/breed/${dog}/images/random`)
+  retrieveDogPic = () => {
+    fetch("https://dog.ceo/api/breeds/image/random")
       .then(response => {
         return response.json();
       })
@@ -42,6 +23,7 @@ class Profile extends Component {
         });
       });
   };
+
   render() {
     return (
       <div>
@@ -51,19 +33,14 @@ class Profile extends Component {
             <ToastBody>
               This is a toast on a white background — check it out!
               <div className="dog-pics-app">
-                {this.state.dogPics
-                  ? this.state.dogPics.map((dog, key) => {
-                      return (
-                        <button
-                          onClick={() => this.retrieveDogPic(dog)}
-                          className="dog-pics-button"
-                          key={key}
-                        >
-                          {dog}
-                        </button>
-                      );
-                    })
-                  : ""}
+                <h1>Dog Pics!</h1>
+                <div>Click the button below to retrieve a dog pic!</div>
+                <button
+                  onClick={this.retrieveDogPic}
+                  className="dog-pics-button"
+                >
+                  Click for a dog pic!
+                </button>
                 {this.state.dogPicLoaded && (
                   <img src={this.state.dogPicURL} alt="Dog Pic!" />
                 )}

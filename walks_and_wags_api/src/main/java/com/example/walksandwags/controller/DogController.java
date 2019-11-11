@@ -24,6 +24,12 @@ public class DogController {
     @GetMapping("/list")
     public Iterable<Dog> listAllDogs() { return dogService.listAllDogs(); }
 
+    //get specific dog
+    @GetMapping("/{dogId}")
+    public Dog getDogById (@PathVariable Long dogId) {
+        return dogService.getDogById(dogId);
+    }
+
     //delete dog profile
 //    @DeleteMapping("/delete/{dogId}")
 //    public HttpStatus deleteDogById(@PathVariable Long dogId) {

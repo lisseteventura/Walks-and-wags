@@ -38,6 +38,10 @@ public class DogServiceImpl implements DogService {
         return dogRepository.findAll();
     }
 
+    @Override
+    public Dog getDogById(Long dogId) {
+        return dogRepository.findById(dogId).get();
+    }
 
     @Override
     @Transactional
