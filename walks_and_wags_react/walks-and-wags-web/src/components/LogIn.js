@@ -44,6 +44,8 @@ class LogIn extends Component {
       .then(response => {
         console.log(response);
         this.setState({ loggedIn: true });
+        console.log(response.data.token);
+        localStorage.setItem("token", response.data.token);
       })
       .catch(error => {
         console.log(error);

@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface DogService {
 
-    public Dog createDog(Dog newDog, String username);
+    public Dog createDog(Dog newDog);
 
     public Iterable<Dog> listAllDogs();
 

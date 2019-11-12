@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/profile")
 public class UserProfileController {
     @Autowired
     UserProfileService userProfileService;
 
-    //create user profile by username
-    @PostMapping("/{username}")
-    public UserProfile createUserProfile(@PathVariable String username, @RequestBody UserProfile userProfile){
-        return userProfileService.createUserProfile(username, userProfile);
+
+    @PostMapping("/profile")
+    public UserProfile createUserProfile(@RequestBody UserProfile userProfile){
+        return userProfileService.createUserProfile(userProfile);
     }
 
 
     //endpoint for getting the user's profile if username is given
-    @GetMapping("/{username}")
+    @GetMapping("/profile/{username}")
     public UserProfile getUserProfile(@PathVariable String username){
         return userProfileService.getUserProfile(username);
     }
+
 
 
 }

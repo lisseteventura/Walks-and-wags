@@ -15,9 +15,9 @@ public class DogController {
     DogService dogService;
 
     //create dog profile by username
-    @PostMapping("/create/{username}")
-    public Dog createDog(@PathVariable String username, @RequestBody Dog newDog) {
-        return dogService.createDog(newDog, username);
+    @PostMapping("/create")
+    public Dog createDog(@RequestBody Dog newDog) {
+        return dogService.createDog(newDog);
     }
 
     //get list of all dogs

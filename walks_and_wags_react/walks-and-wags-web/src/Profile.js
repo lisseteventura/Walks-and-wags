@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Toast, ToastBody, ToastHeader } from "reactstrap";
-
+// import axios from "axios";
 class Profile extends Component {
   constructor() {
     super();
 
     this.state = {
       dogPicURL: "",
-      dogPicLoaded: false
+      dogPicLoaded: false,
+      dogProfile: []
+      // isLoading: true,
+      // errors: null
     };
   }
 
@@ -24,6 +27,26 @@ class Profile extends Component {
       });
   };
 
+  // getDogProfile = () => {
+  //   fetch(`https://localhost:8080/dog/list`)
+  //     .then(response => response.json())
+  //     .then(data =>
+  //       this.setState({
+  //         dogProfile: data,
+  //         isLoading: false
+  //       })
+  //     )
+  //     .catch(error => this.setState({ error, isLoading: false }));
+  // };
+  //
+  // componentDidMount() {
+  //   this.getDogProfile();
+  // }
+  // componentDidMount() {
+  //   axios.get("http://localhost:8080/dog/list").then(response => {
+  //     console.log(response);
+  //   });
+  // }
   render() {
     return (
       <div>
@@ -47,6 +70,14 @@ class Profile extends Component {
               </div>
             </ToastBody>
           </Toast>
+          <div>
+            <h1>Dog profile</h1>
+            <ul>
+              {this.state.dogProfile.map(dog => (
+                <li>{dog.name}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     );

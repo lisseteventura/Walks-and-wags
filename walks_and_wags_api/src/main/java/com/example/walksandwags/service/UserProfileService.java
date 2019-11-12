@@ -4,8 +4,11 @@ import com.example.walksandwags.model.UserProfile;
 
 public interface UserProfileService {
     //add a user's profile if username is given
-    public UserProfile createUserProfile(String username, UserProfile newProfile);
+    UserProfile createUserProfile(UserProfile newProfile);
 
     //get user's profile information if username is given.
-    public UserProfile getUserProfile(String username);
+    UserProfile getUserProfile(String username);
+
+
+
 }
