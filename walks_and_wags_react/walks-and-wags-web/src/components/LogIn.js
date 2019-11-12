@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import axios from "axios";
 import { Redirect } from "react-router-dom";
 import SignUp from "./SignUp.js";
 
@@ -9,60 +8,83 @@ class LogIn extends Component {
     super(props);
 
     this.state = {
-      username: "",
-      password: "",
+      user: {
+        username: "",
+        password: ""
+      },
+      email: "",
+      mobile: "",
       loggedIn: false,
       signedUp: false
     };
   }
 
-  // // console logs the name and value of both username/pw (ex: username ____)
-  // handleChange = e => {
-  //   let name = e.target.name;
-  //   let value = e.target.value;
-  //   let data = {};
-  //   data[name] = value;
-  //   //set data obj empty which will be populated by the value from the input
-  //   this.setState(data);
-  //   console.log(name, value);
-  // };
-  handleUsernameChange = e => {
-    this.setState({
-      username: e.target.value
-    });
-  };
-  handlePasswordChange = e => {
-    this.setState({
-      password: e.target.value
-    });
-  };
-
+  // ------------USER LOGIN-----------
   submitLogIn = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8080/login", this.state)
-      .then(response => {
-        console.log(response);
-        this.setState({ loggedIn: true });
-        console.log(response.data.token);
-        localStorage.setItem("token", response.data.token);
+    fetch("http://localhost:8080/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.user.username,
+        password: this.state.user.password
       })
-      .catch(error => {
-        console.log(error);
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        console.log(res, "my response");
+        this.setState({
+          user: { ...this.state.user, res },
+          loggedIn: true
+        });
+        localStorage.setItem("user", res.token);
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
+  // ------------USER SIGNUP-----------
   submitSignUp = e => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8080/signup", this.state)
-      .then(response => {
-        console.log(response);
-        this.setState({ signedUp: true });
+    fetch("http://localhost:8080/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: this.state.user.username,
+        password: this.state.user.password
       })
-      .catch(error => {
-        console.log(error);
+    })
+      .then(res => {
+        return res.json();
+      })
+      .then(res => {
+        console.log(res, "my response");
+        localStorage.setItem("user", res.token);
+        this.setState({
+          user: { ...this.state.user, res },
+          signedUp: true
+        });
+      })
+      .catch(err => {
+        console.log(err);
       });
+  };
+  // ------------HANDLE CHANGE-----------
+  handleUsernameChange = e => {
+    this.setState({ user: { ...this.state.user, username: e.target.value } });
+  };
+
+  handlePasswordChange = e => {
+    this.setState({
+      user: { ...this.state.user, password: e.target.value }
+    });
   };
 
   render() {
