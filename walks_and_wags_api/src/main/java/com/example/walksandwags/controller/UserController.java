@@ -29,11 +29,11 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(userService.createUser(newUser)));
     }
 
-    //endpoint for user login
-    @GetMapping("/login/{username}/{password}")
-    public User login(@PathVariable String username, @PathVariable String password){
-        return userService.login(username, password);
-    }
+//    //endpoint for user login
+//    @GetMapping("/login/{username}/{password}")
+//    public User login(@PathVariable String username, @PathVariable String password){
+//        return userService.login(username, password);
+//    }
 
     //user login and immediately gets token
     @PostMapping("/login")

@@ -55,10 +55,10 @@ public class UserServiceImpl implements UserService {
 //        return userRepository.save(newUser);
 //    }
 
-    @Override
-    public User login(String username, String password){
-        return userRepository.login(username, password);
-    }
+//    @Override
+//    public User login(String username, String password){
+//        return userRepository.login(username, password);
+//    }
 
     //get user's username(function later used in UserProfile)
     @Override public User getUser(String username){

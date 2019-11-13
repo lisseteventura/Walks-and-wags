@@ -7,7 +7,7 @@ public interface UserProfileService {
     UserProfile createUserProfile(UserProfile newProfile);
 
     //get user's profile information if username is given.
-    UserProfile getUserProfile(String username);
+    UserProfile getUserProfile();
 
 
 

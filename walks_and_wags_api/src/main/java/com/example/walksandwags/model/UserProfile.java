@@ -42,8 +42,9 @@ public class UserProfile {
     }
 
     @JsonIgnore
-    @OneToOne(mappedBy = "userProfile", cascade={CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToOne(mappedBy = "userProfile",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                    CascadeType.PERSIST, CascadeType.REFRESH})
     private User user;
 
     public User getUser() {

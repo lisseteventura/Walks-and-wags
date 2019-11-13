@@ -8,9 +8,8 @@ class Profile extends Component {
       dogPicURL: "",
       dogPicLoaded: false,
       dogs: [],
-      dogProfileLoaded: false
-      // isLoading: true,
-      // errors: null
+      dogProfileLoaded: false,
+      profileNum: 0
     };
   }
 
@@ -74,10 +73,16 @@ class Profile extends Component {
             <h1>Dog profile</h1>
             <button onClick={this.getDogProfile}>Click for profile</button>
             <ul>
-              {this.state.dogs.map(dog => (
-                <li key={dog.name}> {dog.name} </li>
-              ))}
+              {this.state.dogs.length > 0 &&
+                this.state.dogs[this.state.profileNum].name}
             </ul>
+            <button
+              onClick={() =>
+                this.setState({ profileNum: (this.state.profileNum += 1) })
+              }
+            >
+              next
+            </button>
           </div>
         </div>
       </div>
@@ -86,3 +91,7 @@ class Profile extends Component {
 }
 
 export default Profile;
+//
+// {this.state.dogs.map(dog => (
+//   <li key={dog.name}> {dog.name} </li>
+// ))}

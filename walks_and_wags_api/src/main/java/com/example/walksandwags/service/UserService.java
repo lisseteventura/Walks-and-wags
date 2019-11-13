@@ -11,7 +11,7 @@ public interface UserService extends UserDetailsService {
 //    public User createUser(User newUser);
 
     //user login
-    public User login(String username, String password);
+//    public User login(String username, String password);
 
     //get user's username(function later used in UserProfile)
     public User getUser(String username);

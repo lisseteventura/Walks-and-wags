@@ -23,6 +23,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     public UserProfile createUserProfile(UserProfile newProfile) {
         Authentication auth = authImpl.getAuthentication();
         User user = userService.getUser(auth.getName());
+        System.out.println("the user nameeee: "+user.getUsername());
         user.setUserProfile(newProfile);
 //        return userService.createUser(user).getUserProfile();
         return userProfileRepository.save(newProfile);
@@ -31,8 +32,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     //get user's profile information if username is given.
     @Override
-    public UserProfile getUserProfile(String username) {
-        return userProfileRepository.findProfileByUsername(username);
+    public UserProfile getUserProfile() {
+        Authentication auth = authImpl.getAuthentication();
+        User user = userService.getUser(auth.getName());
+        return userProfileRepository.findById(user.getUserProfile().getId()).get();
     }
 
 

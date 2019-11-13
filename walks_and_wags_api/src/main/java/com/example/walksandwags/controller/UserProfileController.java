@@ -18,9 +18,9 @@ public class UserProfileController {
 
 
     //endpoint for getting the user's profile if username is given
-    @GetMapping("/profile/{username}")
-    public UserProfile getUserProfile(@PathVariable String username){
-        return userProfileService.getUserProfile(username);
+    @GetMapping("/profile")
+    public UserProfile getUserProfile(){
+        return userProfileService.getUserProfile();
     }
 
 

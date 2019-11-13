@@ -1,16 +1,34 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import { Row, Col } from "reactstrap";
-// import axios from "axios";
-
+import CreateProfile from "./components/CreateProfile.js";
 class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mobile: null,
-      email: null,
+      mobile: "",
+      email: "",
       buttonClicked: false
     };
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8080/profile", {
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("user"),
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({
+          email: res.email,
+          mobile: res.mobile
+        });
+        console.log("ayyyyy");
+      })
+      .catch(err => console.log(err));
   }
 
   submitProfileInfo = () => {
@@ -37,6 +55,7 @@ class Settings extends Component {
       })
       .catch(err => console.log(err));
   };
+
   handleEmailChange = e => {
     this.setState({
       email: e.target.value
@@ -47,51 +66,31 @@ class Settings extends Component {
       mobile: e.target.value
     });
   };
+
   render() {
     return (
-      <div style={{ width: "50%", margin: "10rem auto" }}>
-        <Row>
-          <Col sm="12" md={{ size: 6, offset: 3 }}>
-            .col-sm-12 .col-md-6 .offset-md-3 - user profile info
-          </Col>
-        </Row>
-        <br />
-        <Form>
-          <FormGroup>
-            <Label for="Email">Email</Label>
-            <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="email"
-              value={this.state.email}
-              onChange={this.state.handleEmailChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="mobile">Mobile</Label>
-            <Input
-              type="mobile"
-              name="mobile"
-              id="mobile"
-              placeholder="mobile"
-              value={this.state.mobile}
-              onChange={this.state.handleMobileChange}
-            />
-          </FormGroup>
-          <Button color="warning" onClick={this.submitProfileInfo}>
-            Submit
-          </Button>
-          <br />
-          {this.state.buttonClicked}
-          {this.state.buttonClicked ? (
-            <Alert color="warning" style={{ textAlign: "center" }}>
-              Success!
-            </Alert>
-          ) : (
-            " "
-          )}
-        </Form>
+      <div>
+        {this.state.loggedIn ? (
+          <div style={{ width: "50%", margin: "3rem auto" }}>
+            <Row>
+              <Col sm="12" md={{ size: 6, offset: 3 }}>
+                - user profile info
+                <div>{this.state.email}</div>
+                <div>{this.state.mobile}</div>
+              </Col>
+            </Row>
+            <br />
+          </div>
+        ) : (
+          <CreateProfile
+            email={this.state.email}
+            mobile={this.state.mobile}
+            submitProfileInfo={this.submitProfileInfo}
+            buttonClicked={this.state.buttonClicked}
+            handleEmailChange={this.state.handleEmailChange}
+            handleMobileChange={this.state.handleMobileChange}
+          />
+        )}
       </div>
     );
   }
