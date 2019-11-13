@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Toast, ToastBody, ToastHeader } from "reactstrap";
-// import axios from "axios";
 class Profile extends Component {
   constructor() {
     super();
@@ -8,7 +7,8 @@ class Profile extends Component {
     this.state = {
       dogPicURL: "",
       dogPicLoaded: false,
-      dogProfile: []
+      dogs: [],
+      dogProfileLoaded: false
       // isLoading: true,
       // errors: null
     };
@@ -27,26 +27,26 @@ class Profile extends Component {
       });
   };
 
-  // getDogProfile = () => {
-  //   fetch(`https://localhost:8080/dog/list`)
-  //     .then(response => response.json())
-  //     .then(data =>
-  //       this.setState({
-  //         dogProfile: data,
-  //         isLoading: false
-  //       })
-  //     )
-  //     .catch(error => this.setState({ error, isLoading: false }));
-  // };
-  //
-  // componentDidMount() {
-  //   this.getDogProfile();
-  // }
-  // componentDidMount() {
-  //   axios.get("http://localhost:8080/dog/list").then(response => {
-  //     console.log(response);
-  //   });
-  // }
+  getDogProfile = () => {
+    console.log("SUBMIT");
+    fetch("http://localhost:8080/dog/list", {
+      method: "get",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("user"),
+        "Content-Type": "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({
+          dogs: res,
+          dogProfileLoaded: true
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div>
@@ -72,11 +72,7 @@ class Profile extends Component {
           </Toast>
           <div>
             <h1>Dog profile</h1>
-            <ul>
-              {this.state.dogProfile.map(dog => (
-                <li>{dog.name}</li>
-              ))}
-            </ul>
+            <button onClick={this.getDogProfile}>Click for profile</button>
           </div>
         </div>
       </div>
