@@ -73,6 +73,11 @@ class Profile extends Component {
           <div>
             <h1>Dog profile</h1>
             <button onClick={this.getDogProfile}>Click for profile</button>
+            <ul>
+              {this.state.dogs.map(dog => (
+                <li key={dog.name}> {dog.name} </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
