@@ -60,22 +60,18 @@ class Profile extends Component {
   render() {
     return (
       <Layout>
-        <div style={{ margin: "12% auto" }}>
+        <div style={{ margin: "4% auto", textAlign: "center" }}>
           <div className="dog-pics-app">
             <h1>Dog Pics!</h1>
-            <button onClick={this.retrieveDogPic} className="dog-pics-button">
-              Click for a dog pic!
-            </button>
+
             {this.state.dogPicLoaded && (
               <img src={this.state.dogPicURL} alt="Dog Pic!" />
             )}
           </div>
           <div>
-            <h1>Dog profile</h1>
-
             <button onClick={this.loadDogPP}>Click for profile</button>
 
-            <ul>
+            <ul style={{ textDecoration: "none" }}>
               <li>
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].name}
@@ -117,3 +113,8 @@ export default Profile;
 // {this.state.dogs.map(dog => (
 //   <li key={dog.name}> {dog.name} </li>
 // ))}
+
+// <li>
+//   {this.state.dogs.length > 0 &&
+//     this.state.dogs[this.state.profileNum].description}
+// </li>
