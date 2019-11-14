@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
+import { Layout } from "./components/Layout.js";
 import CreateProfile from "./components/CreateProfile.js";
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -71,25 +73,33 @@ class Settings extends Component {
   render() {
     return (
       <div>
-        <div style={{ width: "50%", margin: "3rem auto" }}>
-          <Row>
-            <Col sm="12" md={{ size: 6, offset: 3 }}>
-              - user profile info
-              <div>{this.state.email}</div>
-              <div>{this.state.mobile}</div>
-            </Col>
-          </Row>
-          <br />
-        </div>
-        <CreateProfile
-          email={this.state.email}
-          mobile={this.state.mobile}
-          submitProfileInfo={this.submitProfileInfo}
-          buttonClicked={this.state.buttonClicked}
-          handleEmailChange={this.state.handleEmailChange}
-          handleMobileChange={this.state.handleMobileChange}
-        />
-        )}
+        <Layout>
+          <div style={{ width: "100%", margin: "3rem auto" }}>
+            <Row>
+              <Col
+                sm="12"
+                md={{ size: 6, offset: 3 }}
+                style={{
+                  border: "1px solid #888888",
+                  borderRadius: "5px"
+                }}
+              >
+                <h5 style={{ textAlign: "center" }}>User Information </h5>
+                <div>Email: {this.state.email}</div>
+                <div>Mobile: {this.state.mobile}</div>
+              </Col>
+            </Row>
+            <br />
+          </div>
+          <CreateProfile
+            email={this.state.email}
+            mobile={this.state.mobile}
+            submitProfileInfo={this.submitProfileInfo}
+            buttonClicked={this.state.buttonClicked}
+            handleEmailChange={this.state.handleEmailChange}
+            handleMobileChange={this.state.handleMobileChange}
+          />
+        </Layout>
       </div>
     );
   }

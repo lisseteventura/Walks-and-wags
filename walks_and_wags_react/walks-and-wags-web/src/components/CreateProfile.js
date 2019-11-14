@@ -1,11 +1,14 @@
 import React from "react";
 import { Form, Button, FormGroup, Input, Alert, Container } from "reactstrap";
+import { Layout } from "./Layout.js";
 
 const CreateProfile = props => {
   return (
     <div>
-      <Container>
-        <Form>
+      <Layout>
+        <Form style={{ width: "50%", margin: "auto" }}>
+          <h5>Welcome! Please enter the information below: </h5>
+
           <FormGroup>
             <Input
               type="email"
@@ -26,7 +29,11 @@ const CreateProfile = props => {
               onChange={props.handleMobileChange}
             />
           </FormGroup>
-          <Button color="warning" onClick={props.submitProfileInfo}>
+          <Button
+            color="warning"
+            onClick={props.submitProfileInfo}
+            style={{ width: "100%" }}
+          >
             Submit
           </Button>
           <br />
@@ -39,7 +46,7 @@ const CreateProfile = props => {
             " "
           )}
         </Form>
-      </Container>
+      </Layout>
     </div>
   );
 };
