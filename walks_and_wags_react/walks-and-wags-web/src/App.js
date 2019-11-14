@@ -11,15 +11,13 @@ function App() {
     <React.Fragment>
       <NavigationBar />
 
-      <Layout>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/settings" component={Settings} />
-          </Switch>
-        </Router>
-      </Layout>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/profile" component={Profile} />
+          <Route path="/settings" component={Settings} />
+        </Switch>
+      </Router>
     </React.Fragment>
   );
 }

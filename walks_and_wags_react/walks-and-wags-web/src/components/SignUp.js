@@ -20,7 +20,7 @@ const SignUp = props => {
     <div>
       <Button
         color="warning"
-        style={{ width: "555px", height: "38px", color: "white" }}
+        style={{ width: "100%", height: "38px", color: "white" }}
         onClick={toggle}
       >
         Sign up

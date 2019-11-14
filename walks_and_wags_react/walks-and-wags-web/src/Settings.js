@@ -26,6 +26,7 @@ class Settings extends Component {
           email: res.email,
           mobile: res.mobile
         });
+
         console.log("ayyyyy");
       })
       .catch(err => console.log(err));
@@ -70,26 +71,24 @@ class Settings extends Component {
   render() {
     return (
       <div>
-        {this.state.loggedIn ? (
-          <div style={{ width: "50%", margin: "3rem auto" }}>
-            <Row>
-              <Col sm="12" md={{ size: 6, offset: 3 }}>
-                - user profile info
-                <div>{this.state.email}</div>
-                <div>{this.state.mobile}</div>
-              </Col>
-            </Row>
-            <br />
-          </div>
-        ) : (
-          <CreateProfile
-            email={this.state.email}
-            mobile={this.state.mobile}
-            submitProfileInfo={this.submitProfileInfo}
-            buttonClicked={this.state.buttonClicked}
-            handleEmailChange={this.state.handleEmailChange}
-            handleMobileChange={this.state.handleMobileChange}
-          />
+        <div style={{ width: "50%", margin: "3rem auto" }}>
+          <Row>
+            <Col sm="12" md={{ size: 6, offset: 3 }}>
+              - user profile info
+              <div>{this.state.email}</div>
+              <div>{this.state.mobile}</div>
+            </Col>
+          </Row>
+          <br />
+        </div>
+        <CreateProfile
+          email={this.state.email}
+          mobile={this.state.mobile}
+          submitProfileInfo={this.submitProfileInfo}
+          buttonClicked={this.state.buttonClicked}
+          handleEmailChange={this.state.handleEmailChange}
+          handleMobileChange={this.state.handleMobileChange}
+        />
         )}
       </div>
     );
