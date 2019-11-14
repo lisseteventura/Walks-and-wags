@@ -13,6 +13,17 @@ class Profile extends Component {
     };
   }
 
+  componentDidMount() {
+    this.retrieveDogPic();
+    this.getDogProfile();
+  }
+
+  loadDogPP = () => {
+    this.retrieveDogPic();
+    this.getDogProfile();
+    this.setState({ profileNum: (this.state.profileNum += 1) });
+  };
+
   retrieveDogPic = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
       .then(response => {
@@ -61,11 +72,32 @@ class Profile extends Component {
           </div>
           <div>
             <h1>Dog profile</h1>
-            <button onClick={this.getDogProfile}>Click for profile</button>
+
+            <button onClick={this.loadDogPP}>Click for profile</button>
+
             <ul>
-              {this.state.dogs.length > 0 &&
-                this.state.dogs[this.state.profileNum].name}
+              <li>
+                {this.state.dogs.length > 0 &&
+                  this.state.dogs[this.state.profileNum].name}
+              </li>
+              <li>
+                {this.state.dogs.length > 0 &&
+                  this.state.dogs[this.state.profileNum].age}
+              </li>
+              <li>
+                {this.state.dogs.length > 0 &&
+                  this.state.dogs[this.state.profileNum].gender}
+              </li>
+              <li>
+                {this.state.dogs.length > 0 &&
+                  this.state.dogs[this.state.profileNum].description}
+              </li>
+              <li>
+                {this.state.dogs.length > 0 &&
+                  this.state.dogs[this.state.profileNum].favTreat}
+              </li>
             </ul>
+
             <button
               onClick={() =>
                 this.setState({ profileNum: (this.state.profileNum += 1) })

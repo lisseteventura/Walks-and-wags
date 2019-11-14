@@ -13,7 +13,7 @@ const Footer = () => {
       }}
     >
       {" "}
-      <p style={{ textAlign: "center", paddingTop: "1.5rem" }}>
+      <p style={{ textAlign: "center", paddingTop: "1.8rem" }}>
         © 2019 Lissete Ventura
       </p>
     </div>
