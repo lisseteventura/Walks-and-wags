@@ -74,7 +74,7 @@ class Settings extends Component {
     return (
       <div>
         <Layout>
-          <div style={{ width: "100%", margin: "3rem auto" }}>
+          <div style={{ width: "100%", margin: "12% auto" }}>
             <Row>
               <Col
                 sm="12"
