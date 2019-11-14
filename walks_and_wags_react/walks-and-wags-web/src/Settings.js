@@ -9,6 +9,8 @@ class Settings extends Component {
     this.state = {
       mobile: "",
       email: "",
+      displayEmail: "",
+      displayMobile: "",
       buttonClicked: false
     };
   }
@@ -25,8 +27,8 @@ class Settings extends Component {
       .then(res => {
         console.log(res);
         this.setState({
-          email: res.email,
-          mobile: res.mobile
+          displayEmail: res.email,
+          displayMobile: res.mobile
         });
 
         console.log("ayyyyy");
@@ -36,6 +38,7 @@ class Settings extends Component {
 
   submitProfileInfo = () => {
     console.log("SUBMIT");
+    console.log(this.state.email, this.state.mobile);
     fetch("http://localhost:8080/profile", {
       method: "post",
       headers: {
@@ -49,10 +52,13 @@ class Settings extends Component {
     })
       .then(res => res.json())
       .then(res => {
+        console.log(res);
         this.setState({
           email: "",
           mobile: "",
-          buttonClicked: true
+          buttonClicked: true,
+          displayEmail: res.email,
+          displayMobile: res.mobile
         });
         console.log("ayyyyy");
       })
@@ -85,8 +91,8 @@ class Settings extends Component {
                 }}
               >
                 <h5 style={{ textAlign: "center" }}>User Information </h5>
-                <div>Email: {this.state.email}</div>
-                <div>Mobile: {this.state.mobile}</div>
+                <div>Email: {this.state.displayEmail}</div>
+                <div>Mobile: {this.state.displayMobile}</div>
               </Col>
             </Row>
             <br />
@@ -96,8 +102,8 @@ class Settings extends Component {
             mobile={this.state.mobile}
             submitProfileInfo={this.submitProfileInfo}
             buttonClicked={this.state.buttonClicked}
-            handleEmailChange={this.state.handleEmailChange}
-            handleMobileChange={this.state.handleMobileChange}
+            handleEmailChange={this.handleEmailChange}
+            handleMobileChange={this.handleMobileChange}
           />
         </Layout>
       </div>
