@@ -98,7 +98,7 @@ class LogIn extends Component {
       <div>
         <Form
           onSubmit={this.submitLogIn}
-          style={{ width: "50%", margin: "auto" }}
+          style={{ width: "80%", margin: "auto" }}
         >
           <FormGroup>
             <Label for="Username">Username</Label>
@@ -125,6 +125,7 @@ class LogIn extends Component {
           <Button
             className="btn btn-primary btn-block"
             onClick={this.submitLogIn}
+            style={{ marginBottom: "1rem" }}
           >
             Log in
           </Button>

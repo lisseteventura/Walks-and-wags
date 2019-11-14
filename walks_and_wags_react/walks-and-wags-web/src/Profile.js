@@ -68,29 +68,37 @@ class Profile extends Component {
             )}
           </div>
           <div>
+            <hr />
             <ul style={{ listStyleType: "none" }}>
               <li>
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].name}
-              </li>
-              <li>
+                ,{" "}
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].age}
               </li>
+
               <li>
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].gender}
               </li>
               <li>
+                {" "}
+                Bio:{" "}
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].description}
               </li>
               <li>
+                Favorite treat:{" "}
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].favTreat}
               </li>
             </ul>
-            <Button color="info" onClick={this.loadDogPP}>
+            <Button
+              style={{ width: "50%" }}
+              color="danger"
+              onClick={this.loadDogPP}
+            >
               Click to see more!
             </Button>
           </div>
