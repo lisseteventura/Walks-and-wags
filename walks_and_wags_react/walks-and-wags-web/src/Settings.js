@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col } from "reactstrap";
 import { Layout } from "./components/Layout.js";
 import CreateProfile from "./components/CreateProfile.js";
+import CreateDogProfile from "./components/CreateDogProfile.js";
 
 class Settings extends Component {
   constructor(props) {
@@ -11,7 +12,12 @@ class Settings extends Component {
       email: "",
       displayEmail: "",
       displayMobile: "",
-      buttonClicked: false
+      buttonClicked: false,
+      name: "",
+      age: "",
+      gender: "",
+      description: "",
+      favTreat: ""
     };
   }
 
@@ -65,6 +71,38 @@ class Settings extends Component {
       .catch(err => console.log(err));
   };
 
+  submitDogProfile = () => {
+    console.log("SUBMIT");
+    console.log(this.state.email, this.state.mobile);
+    fetch("http://localhost:8080/dog/create", {
+      method: "post",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("user"),
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        age: this.state.age,
+        gender: this.state.gender,
+        description: this.state.description,
+        favTreat: this.state.favTreat
+      })
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        this.setState({
+          name: "",
+          age: "",
+          gender: "",
+          description: "",
+          favTreat: ""
+        });
+        console.log("ayyyyy");
+      })
+      .catch(err => console.log(err));
+  };
+
   handleEmailChange = e => {
     this.setState({
       email: e.target.value
@@ -75,10 +113,49 @@ class Settings extends Component {
       mobile: e.target.value
     });
   };
+  handleNameChange = e => {
+    this.setState({
+      name: e.target.value
+    });
+  };
+  handleAgeChange = e => {
+    this.setState({
+      age: e.target.value
+    });
+  };
+  handleGenderChange = e => {
+    this.setState({
+      gender: e.target.value
+    });
+  };
+  handleDescChange = e => {
+    this.setState({
+      description: e.target.value
+    });
+  };
+  handleFavTreatChange = e => {
+    this.setState({
+      favTreat: e.target.value
+    });
+  };
 
   render() {
     return (
       <div>
+        <a href="#">Looking to make a profile for your dog?</a>
+        <CreateDogProfile
+          name={this.state.name}
+          age={this.state.age}
+          gender={this.state.gender}
+          description={this.state.description}
+          favTreat={this.state.favTreat}
+          submitDogProfile={this.submitDogProfile}
+          handleNameChange={this.handleNameChange}
+          handleAgeChange={this.handleAgeChange}
+          handleGenderChange={this.handleGenderChange}
+          handleDescChange={this.handleDescChange}
+          handleFavTreatChange={this.handleFavTreatChange}
+        />
         <Layout>
           <div style={{ width: "100%", margin: "12% auto" }}>
             <Row>
