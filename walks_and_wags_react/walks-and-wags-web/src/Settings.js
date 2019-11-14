@@ -3,7 +3,7 @@ import { Row, Col } from "reactstrap";
 import { Layout } from "./components/Layout.js";
 import CreateProfile from "./components/CreateProfile.js";
 import CreateDogProfile from "./components/CreateDogProfile.js";
-
+import Footer from "./components/Footer.js";
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -142,22 +142,8 @@ class Settings extends Component {
   render() {
     return (
       <div>
-        <a href="#">Looking to make a profile for your dog?</a>
-        <CreateDogProfile
-          name={this.state.name}
-          age={this.state.age}
-          gender={this.state.gender}
-          description={this.state.description}
-          favTreat={this.state.favTreat}
-          submitDogProfile={this.submitDogProfile}
-          handleNameChange={this.handleNameChange}
-          handleAgeChange={this.handleAgeChange}
-          handleGenderChange={this.handleGenderChange}
-          handleDescChange={this.handleDescChange}
-          handleFavTreatChange={this.handleFavTreatChange}
-        />
         <Layout>
-          <div style={{ width: "100%", margin: "12% auto" }}>
+          <div style={{ width: "100%", margin: "10% auto" }}>
             <Row>
               <Col
                 sm="12"
@@ -173,7 +159,24 @@ class Settings extends Component {
               </Col>
             </Row>
             <br />
+            <br />
+            <div style={{ marginLeft: "37%" }}>
+              <CreateDogProfile
+                name={this.state.name}
+                age={this.state.age}
+                gender={this.state.gender}
+                description={this.state.description}
+                favTreat={this.state.favTreat}
+                submitDogProfile={this.submitDogProfile}
+                handleNameChange={this.handleNameChange}
+                handleAgeChange={this.handleAgeChange}
+                handleGenderChange={this.handleGenderChange}
+                handleDescChange={this.handleDescChange}
+                handleFavTreatChange={this.handleFavTreatChange}
+              />
+            </div>
           </div>
+
           <CreateProfile
             email={this.state.email}
             mobile={this.state.mobile}
@@ -182,7 +185,9 @@ class Settings extends Component {
             handleEmailChange={this.handleEmailChange}
             handleMobileChange={this.handleMobileChange}
           />
+          <br />
         </Layout>
+        <Footer />
       </div>
     );
   }

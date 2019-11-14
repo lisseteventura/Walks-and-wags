@@ -1,13 +1,13 @@
 import React from "react";
-import { Form, Button, FormGroup, Input, Alert, Container } from "reactstrap";
+import { Form, Button, FormGroup, Input, Alert } from "reactstrap";
 import { Layout } from "./Layout.js";
 
 const CreateProfile = props => {
   return (
     <div>
       <Layout>
-        <Form style={{ width: "50%", margin: "auto" }}>
-          <h5>Welcome! Please enter the information below: </h5>
+        <Form style={{ width: "50%", margin: "auto", textAlign: "center" }}>
+          <h5>Enter or Update Your Information: </h5>
 
           <FormGroup>
             <Input

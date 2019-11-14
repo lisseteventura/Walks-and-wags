@@ -19,18 +19,18 @@ const CreateDogProfile = props => {
   return (
     <div>
       <Button
-        color="primary"
+        color="info"
         onClick={toggle}
-        style={{ width: "20%", height: "50%" }}
+        style={{ width: "40%", height: "50%" }}
       >
         Create a profile for your pup!
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Pups Profile</ModalHeader>
+        <ModalHeader toggle={toggle}>Puppy Profile</ModalHeader>
         <ModalBody>
-          <form onSubmit={e => props.submitSignUp(e)}>
+          <form onSubmit={props.submitDogProfile}>
             <FormGroup>
-              <p>Please enter required fields.</p>
+              <p>Please enter required fields for your pup.</p>
               <Input
                 type="text"
                 placeholder="name"
@@ -69,8 +69,8 @@ const CreateDogProfile = props => {
           </form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={props.submitDogProfile}>
-            Do Something
+          <Button color="info" onClick={props.submitDogProfile}>
+            Create!
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
             Cancel

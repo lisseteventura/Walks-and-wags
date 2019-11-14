@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Layout } from "./components/Layout.js";
+import { Button } from "reactstrap";
 class Profile extends Component {
   constructor() {
     super();
@@ -62,16 +63,12 @@ class Profile extends Component {
       <Layout>
         <div style={{ margin: "4% auto", textAlign: "center" }}>
           <div className="dog-pics-app">
-            <h1>Dog Pics!</h1>
-
             {this.state.dogPicLoaded && (
               <img src={this.state.dogPicURL} alt="Dog Pic!" />
             )}
           </div>
           <div>
-            <button onClick={this.loadDogPP}>Click for profile</button>
-
-            <ul style={{ textDecoration: "none" }}>
+            <ul style={{ listStyleType: "none" }}>
               <li>
                 {this.state.dogs.length > 0 &&
                   this.state.dogs[this.state.profileNum].name}
@@ -93,14 +90,9 @@ class Profile extends Component {
                   this.state.dogs[this.state.profileNum].favTreat}
               </li>
             </ul>
-
-            <button
-              onClick={() =>
-                this.setState({ profileNum: (this.state.profileNum += 1) })
-              }
-            >
-              next
-            </button>
+            <Button color="info" onClick={this.loadDogPP}>
+              Click to see more!
+            </Button>
           </div>
         </div>
       </Layout>
@@ -118,3 +110,10 @@ export default Profile;
 //   {this.state.dogs.length > 0 &&
 //     this.state.dogs[this.state.profileNum].description}
 // </li>
+// <button
+//   onClick={() =>
+//     this.setState({ profileNum: (this.state.profileNum += 1) })
+//   }
+// >
+//   next
+// </button>
