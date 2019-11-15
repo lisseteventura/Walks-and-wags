@@ -44,7 +44,7 @@ class Profile extends Component {
 
   getDogProfile = () => {
     console.log("SUBMIT");
-    fetch("http://localhost:8081/dog/list", {
+    fetch("http://localhost:8080/dog/list", {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user"),
