@@ -15,12 +15,16 @@ I started by making an ERD diagram for this website. I wanted to visual see the 
 
 ### Unsolved Problems and Major Hurdles
 Some of my unsolved problems:
+- User can't like/dislike/match with other dogs.
+- User can't update their own picture for their dog yet.
+- User can't reach out to the owner of the dog.
 
 Major hurdles included:
 - Flyway errors and connection being refused while developing a microservice.
 - Issues with Maven build.
 - Choosing where state should reside in my React app.
 - 401 Unauthorized error when trying to fetch the list of dogs.
+- Eorros during deployment
 
 
 ### User Stories
