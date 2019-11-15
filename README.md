@@ -36,3 +36,4 @@ Major hurdles included:
 - As a user, I would like to be able to reach out to the owner of the dog so that I can set up a playdate.
 
 ### Sketches
+![IMG_0401](https://user-images.githubusercontent.com/54462998/68944858-ec4c8b80-077c-11ea-9a84-9f750e70e3b0.jpg)
