@@ -16,7 +16,11 @@ class Home extends Component {
               Make your dog a lucky dog. View through the profile's of dogs in
               your area. We're pawsitive we'll find a friend for your dog.
               <br />
-              <img style={{ width: "60%", height: "90%" }} src={twoDogs} />
+              <img
+                style={{ width: "60%", height: "90%" }}
+                src={twoDogs}
+                alt="Two dogs walking"
+              />
             </Col>
             <Col xs="6">
               <LogIn />

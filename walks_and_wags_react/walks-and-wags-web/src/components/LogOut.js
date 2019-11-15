@@ -8,6 +8,7 @@ class LogOut extends Component {
     return (
       <div>
         <h1>Logout Successful.</h1>
+        <h4>You have successfully logged out. </h4>
       </div>
     );
   }

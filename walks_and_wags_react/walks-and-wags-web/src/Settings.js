@@ -4,6 +4,7 @@ import { Layout } from "./components/Layout.js";
 import CreateProfile from "./components/CreateProfile.js";
 import CreateDogProfile from "./components/CreateDogProfile.js";
 import Footer from "./components/Footer.js";
+import { Redirect } from "react-router-dom";
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,8 @@ class Settings extends Component {
       age: "",
       gender: "",
       description: "",
-      favTreat: ""
+      favTreat: "",
+      createButtonClicked: false
     };
   }
 
@@ -96,7 +98,8 @@ class Settings extends Component {
           age: "",
           gender: "",
           description: "",
-          favTreat: ""
+          favTreat: "",
+          createButtonClicked: true
         });
         console.log("ayyyyy");
       })
@@ -140,6 +143,9 @@ class Settings extends Component {
   };
 
   render() {
+    if (this.state.createButtonClicked) {
+      return <Redirect to="/profile" />;
+    }
     return (
       <div>
         <Layout>
@@ -173,6 +179,7 @@ class Settings extends Component {
                 handleGenderChange={this.handleGenderChange}
                 handleDescChange={this.handleDescChange}
                 handleFavTreatChange={this.handleFavTreatChange}
+                createButtonClicked={this.state.createButtonClicked}
               />
             </div>
           </div>

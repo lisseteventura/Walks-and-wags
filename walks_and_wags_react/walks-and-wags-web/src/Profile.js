@@ -64,7 +64,11 @@ class Profile extends Component {
         <div style={{ margin: "4% auto", textAlign: "center" }}>
           <div className="dog-pics-app">
             {this.state.dogPicLoaded && (
-              <img src={this.state.dogPicURL} alt="Dog Pic!" />
+              <img
+                style={{ width: "50%" }}
+                src={this.state.dogPicURL}
+                alt="Dog Pic!"
+              />
             )}
           </div>
           <div>
