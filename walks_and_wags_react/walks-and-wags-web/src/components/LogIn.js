@@ -22,7 +22,7 @@ class LogIn extends Component {
   // ------------USER LOGIN-----------
   submitLogIn = e => {
     e.preventDefault();
-    fetch("http://localhost:8080/login", {
+    fetch("http://localhost:8081/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -51,7 +51,7 @@ class LogIn extends Component {
   // ------------USER SIGNUP-----------
   submitSignUp = e => {
     e.preventDefault();
-    fetch("http://localhost:8080/signup", {
+    fetch("http://localhost:8081/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

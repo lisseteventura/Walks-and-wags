@@ -22,7 +22,11 @@ class Profile extends Component {
   loadDogPP = () => {
     this.retrieveDogPic();
     this.getDogProfile();
-    this.setState({ profileNum: (this.state.profileNum += 1) });
+    if (this.state.profileNum == this.state.dogs.length - 1) {
+      this.setState({ profileNum: 0 });
+    } else {
+      this.setState({ profileNum: (this.state.profileNum += 1) });
+    }
   };
 
   retrieveDogPic = () => {
@@ -40,7 +44,7 @@ class Profile extends Component {
 
   getDogProfile = () => {
     console.log("SUBMIT");
-    fetch("http://localhost:8080/dog/list", {
+    fetch("http://localhost:8081/dog/list", {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user"),

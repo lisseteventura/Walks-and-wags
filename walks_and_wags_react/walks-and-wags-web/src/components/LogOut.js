@@ -6,7 +6,7 @@ class LogOut extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{ marginTop: "4rem" }}>
         <h1>Logout Successful.</h1>
         <h4>You have successfully logged out. </h4>
       </div>

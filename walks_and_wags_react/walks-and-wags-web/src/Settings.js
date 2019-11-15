@@ -24,7 +24,7 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/profile", {
+    fetch("http://localhost:8081/profile", {
       method: "get",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user"),
@@ -47,7 +47,7 @@ class Settings extends Component {
   submitProfileInfo = () => {
     console.log("SUBMIT");
     console.log(this.state.email, this.state.mobile);
-    fetch("http://localhost:8080/profile", {
+    fetch("http://localhost:8081/profile", {
       method: "post",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user"),
@@ -76,7 +76,7 @@ class Settings extends Component {
   submitDogProfile = () => {
     console.log("SUBMIT");
     console.log(this.state.email, this.state.mobile);
-    fetch("http://localhost:8080/dog/create", {
+    fetch("http://localhost:8081/dog/create", {
       method: "post",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("user"),
